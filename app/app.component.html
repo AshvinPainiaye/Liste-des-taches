@@ -1,0 +1,37 @@
+<div class="container">
+    <style>
+        input[type=checkbox]:checked + label {
+            text-decoration:line-through;
+        } 
+    </style>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="text-center">Todos</h1>
+        <form (submit)="onSubmit()">
+            <div class="form-group">
+                <input [(ngModel)]="newTodo" type="text" class="form-control" name="newTodo" placeholder="Entrer un todo">
+            </div>
+        </form>
+
+        <ul class="list-unstyled">
+            <li *ngFor="let todo of listTodos; let i = index">
+                <div>
+                    <div class="checkbox">
+                        <input type="checkbox" value="">
+                        <label>{{todo}}</label>
+                        <i class="glyphicon glyphicon-trash text-danger" (click)="deleteTodo(i)" style="cursor:pointer"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row" style="margin-top:40px">
+    <div class="col-md-12 text-right">
+Ashvin PAINIAYE. 2017
+</div>
+</div>
+
+</div>
