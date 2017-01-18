@@ -1,1 +1,1 @@
-# Angular Todo App
+# Angular Todo App with electron
