@@ -19,9 +19,14 @@ export class AppComponent {
     this.newTodo = '';
   }
 
+  deleteAllTodo() {
+    if (confirm("Voulez-vous réellement supprimer toute les taches ?")) {
+      this.listTodos = [];
+    }
+  }
+
   deleteTodo(index: number) {
-    console.log(index);
-    if (confirm("Voulez-vous réellement supprimer ?")) {
+    if (confirm("Voulez-vous réellement supprimer cette tache ?")) {
       this.listTodos.splice(index, 1);
     }
   }
