@@ -1,60 +1,52 @@
 <div class="container">
-    <style>
-        input[type=checkbox]:checked + label {
-            text-decoration:line-through;
-        }
-    </style>
+<style>
+input[type=checkbox]:checked + label {
+  text-decoration:line-through;
+}
+</style>
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h1 class="text-center">Todos</h1>
-        <form (submit)="onSubmit()">
-            <div class="form-group">
-                <input [(ngModel)]="newTodo" type="text" class="form-control" name="newTodo" placeholder="Entrer une tache" style="border-radius:0;" required>
-</div>
-</form>
-
-
-</div>
+  <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-center">Todos</h1>
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <input [(ngModel)]="newTodo" type="text" class="form-control" name="newTodo" placeholder="Entrer une tache" style="border-radius:0;" required>
+      </div>
+    </form>
+  </div>
 </div>
 </div>
 
 
 <section class="container" *ngIf="listTodos.length > 0">
-
-    <div class="row">
-        <div class="col-md-12">
-            <section class="panel tasks-widget">
-
-
-                <header class="panel-heading">
-                    Liste des taches
-                    <div class="pull-right">
-                        <button class="btn btn-danger btn-xs" (click)="deleteAllTodo()">Tout supprimer</button>
-                    </div>
-                </header>
-                <div class="panel-body">
-                    <div class="task-content">
-                        <ul id="sortable" class="task-list ui-sortable">
-                            <li class="list-primary" *ngFor="let todo of listTodos; let i = index">
-                                <i class=" fa fa-ellipsis-v"></i>
-                                <div class="task-title">
-                                    <input type="checkbox" class="task-checkbox" style="position:relative; top:3px" value="" /> <label class="task-title-sp" style="font-weight: normal; margin-left:10px;">{{todo}}</label>
-<div class="pull-right">
-    <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="deleteTodo(i)"></button>
-</div>
-</div>
-</li>
-
-</ul>
-</div>
-<div class=" add-task-row">
-    <p>{{listTodos.length}} {{listTodos.length > 1 ? 'taches' : 'tache'}}</p>
-</div>
-</div>
-
-</section>
-</div>
-</div>
-
+  <div class="row">
+    <div class="col-md-12">
+      <section class="panel tasks-widget">
+        <header class="panel-heading">
+          Liste des taches
+          <div class="pull-right">
+            <button class="btn btn-danger btn-xs" (click)="deleteAllTodo()">Tout supprimer</button>
+          </div>
+        </header>
+        <div class="panel-body">
+          <div class="task-content">
+            <ul id="sortable" class="task-list ui-sortable">
+              <li class="list-primary" *ngFor="let todo of listTodos; let i = index">
+                <i class=" fa fa-ellipsis-v"></i>
+                <div class="task-title">
+                  <input type="checkbox" class="task-checkbox" style="position:relative; top:3px" value="" /> <label class="task-title-sp" style="font-weight: normal; margin-left:10px;">{{todo}}</label>
+                  <div class="pull-right">
+                    <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="deleteTodo(i)"></button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class=" add-task-row">
+            <p>{{listTodos.length}} {{listTodos.length > 1 ? 'taches' : 'tache'}}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </section>
