@@ -29,7 +29,7 @@
 
                 <header class="panel-heading">
                     Liste des taches
-                    <div class="pull-right hidden-phone">
+                    <div class="pull-right">
                         <button class="btn btn-danger btn-xs" (click)="deleteAllTodo()">Tout supprimer</button>
                     </div>
                 </header>
@@ -40,7 +40,7 @@
                                 <i class=" fa fa-ellipsis-v"></i>
                                 <div class="task-title">
                                     <input type="checkbox" class="task-checkbox" style="position:relative; top:3px" value="" /> <label class="task-title-sp" style="font-weight: normal; margin-left:10px;">{{todo}}</label>
-<div class="pull-right hidden-phone">
+<div class="pull-right">
     <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="deleteTodo(i)"></button>
 </div>
 </div>
