@@ -2,20 +2,6 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
-/*
-const Datastore = require('nedb')
-  , db = new Datastore({ filename: 'path/to/datafile', autoload: true });
-
-  var doc = {  
-    name: 'Scott',
-    twitter: '@ScottWRobinson'
-};
-
-db.insert(doc, function(err, doc) {  
-});
-*/
-
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
