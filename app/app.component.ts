@@ -12,12 +12,14 @@ export class AppComponent {
   newTodo: string;
   listTodos: any;
   nbTodos: number;
+  nbTodosCompleted: number;
   db: any;
 
   constructor() {
     this.db = new Datastore({ filename: 'path/to/datafile', autoload: true });
     this.getAll();
     this.getNb();
+    this.getNbCompleted();
   }
 
 
@@ -38,6 +40,15 @@ export class AppComponent {
     });
   }
 
+
+  // Get number tasks completed
+  getNbCompleted() {
+    this.db.count({ 'complete': true }, (err: Error, count: number) => {
+      if (err) throw err;
+      this.nbTodosCompleted = count;
+      console.log(count);
+    });
+  }
 
   onSubmit() {
     var todo: any = {
@@ -61,6 +72,8 @@ export class AppComponent {
         todo.complete = true;
       }
       this.db.update({ _id: id }, { $set: { complete: todo.complete } });
+      this.getAll();
+      this.getNbCompleted();
     });
   }
 
@@ -69,6 +82,16 @@ export class AppComponent {
       this.db.remove({}, { multi: true });
       this.getAll();
       this.getNb();
+      this.getNbCompleted();
+    }
+  }
+
+  deleteAllTodoCompleted() {
+    if (confirm("Voulez-vous réellement supprimer toute les taches effectuer ?")) {
+      this.db.remove({ 'complete': true }, { multi: true });
+      this.getAll();
+      this.getNb();
+      this.getNbCompleted();
     }
   }
 
@@ -77,6 +100,7 @@ export class AppComponent {
       this.db.remove({ '_id': id });
       this.getAll();
       this.getNb();
+      this.getNbCompleted();
     }
   }
 
