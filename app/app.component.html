@@ -18,7 +18,8 @@ input[type=checkbox]:checked + label {
 </div>
 
 
-<section class="container" *ngIf="listTodos.length > 0">
+<section class="container" *ngIf="nbTodos > 0">
+  
   <div class="row">
     <div class="col-md-12">
       <section class="panel tasks-widget">
@@ -31,19 +32,20 @@ input[type=checkbox]:checked + label {
         <div class="panel-body">
           <div class="task-content">
             <ul id="sortable" class="task-list ui-sortable">
-              <li class="list-primary" *ngFor="let todo of listTodos; let i = index">
+              <li class="list-primary" *ngFor="let todo of listTodos;">
                 <i class=" fa fa-ellipsis-v"></i>
                 <div class="task-title">
-                  <input type="checkbox" class="task-checkbox" style="position:relative; top:3px" value="" /> <label class="task-title-sp" style="font-weight: normal; margin-left:10px;">{{todo}}</label>
+                  <input type="checkbox" (click)="completeTodo(todo._id)" class="task-checkbox" style="position:relative; top:3px" value="" [checked]="todo.complete" />
+                  <label class="task-title-sp" style="font-weight: normal; margin-left:10px;">{{todo.name}}</label>
                   <div class="pull-right">
-                    <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="deleteTodo(i)"></button>
+                    <button class="btn btn-danger btn-xs fa fa-trash-o" (click)="deleteTodo(todo._id)"></button>
                   </div>
                 </div>
               </li>
             </ul>
           </div>
           <div class=" add-task-row">
-            <p>{{listTodos.length}} {{listTodos.length > 1 ? 'taches' : 'tache'}}</p>
+            <p>{{nbTodos}} {{nbTodos > 1 ? 'taches' : 'tache'}}</p>
           </div>
         </div>
       </section>

@@ -1,8 +1,8 @@
 {
-  "name": "angular-quickstart",
+  "name": "todo-app",
   "version": "1.0.0",
   "main": "main.js",
-  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "description": "todo app",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
@@ -15,7 +15,7 @@
     "tsc:w": "tsc -w"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ashvin Painiaye",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~2.4.0",
@@ -26,8 +26,10 @@
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-browser-dynamic": "~2.4.0",
     "@angular/router": "~3.4.0",
+    "@types/nedb": "0.0.31",
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.4.1",
+    "nedb": "^1.8.0",
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
     "zone.js": "^0.7.4"
