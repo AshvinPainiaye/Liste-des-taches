@@ -13,6 +13,7 @@ export class AppComponent {
   listTodos: any;
   nbTodos: number;
   nbTodosCompleted: number;
+  _filter: string;
   db: any;
 
   constructor() {
@@ -20,6 +21,7 @@ export class AppComponent {
     this.getAll();
     this.getNb();
     this.getNbCompleted();
+    this._filter = 'tout';
   }
 
 
@@ -46,8 +48,24 @@ export class AppComponent {
     this.db.count({ 'complete': true }, (err: Error, count: number) => {
       if (err) throw err;
       this.nbTodosCompleted = count;
-      console.log(count);
     });
+  }
+
+
+  filter(filter: any) {
+
+    if (filter == 'tout') {
+      this.getAll();
+    } else {
+
+      this.db.find({ 'complete': filter }, (err: Error, todos: string[]) => {
+        if (err) throw err;
+        this.listTodos = todos;
+      });
+
+    }
+    this._filter = filter;
+
   }
 
   onSubmit() {
@@ -58,7 +76,7 @@ export class AppComponent {
     this.db.insert(todo);
     this.getAll();
     this.getNb();
-
+    this._filter = 'tout';
     this.newTodo = '';
   }
 
@@ -92,6 +110,7 @@ export class AppComponent {
       this.getAll();
       this.getNb();
       this.getNbCompleted();
+      this._filter = 'tout';
     }
   }
 

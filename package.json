@@ -1,8 +1,14 @@
 {
-  "name": "todo-app",
+  "name": "liste-des-taches",
   "version": "1.0.0",
   "main": "main.js",
-  "description": "todo app",
+  "description": "L'application permet de créer vos taches à effectuer pour ne rien oublié",
+  "author": "Ashvin Painiaye <contact@ashvinpainiaye.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AshvinPainiaye/Liste-des-taches"
+  },
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
@@ -15,8 +21,6 @@
     "tsc:w": "tsc -w"
   },
   "keywords": [],
-  "author": "Ashvin Painiaye",
-  "license": "MIT",
   "dependencies": {
     "@angular/common": "~2.4.0",
     "@angular/compiler": "~2.4.0",
@@ -56,6 +60,5 @@
     "rimraf": "^2.5.4",
     "tslint": "^3.15.1",
     "typescript": "~2.0.10"
-  },
-  "repository": {}
+  }
 }
