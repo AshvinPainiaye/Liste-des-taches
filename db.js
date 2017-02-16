@@ -15,6 +15,7 @@ connection.query('CREATE TABLE IF NOT EXISTS todo(id int primary key AUTO_INCREM
     if (err)
         throw err;
 });
+
 // New task
 app.post('/new', function (req, res) {
     var data = req.body;
@@ -23,6 +24,7 @@ app.post('/new', function (req, res) {
             throw err;
     });
 });
+
 // All task
 app.get('/', function (req, res) {
     connection.query('SELECT * FROM todo', function (err, results) {
@@ -30,6 +32,7 @@ app.get('/', function (req, res) {
             throw err;
     });
 });
+
 // Delete task
 app.get('/:id', function (req, res) {
     connection.query('DELETE FROM todo WHERE ID =' + req.params.id, function (err, results) {
@@ -37,5 +40,5 @@ app.get('/:id', function (req, res) {
             throw err;
     });
 });
+
 app.listen(8080);
-//# sourceMappingURL=db.js.map
