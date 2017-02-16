@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import Datastore = require('nedb');
 
+import { Injectable } from '@angular/core';                                                                                                    
+import { Http, Headers } from '@angular/http';
+
 @Component({
   selector: 'my-todo-app',
   moduleId: module.id,
