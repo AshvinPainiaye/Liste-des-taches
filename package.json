@@ -1,6 +1,6 @@
 {
   "name": "liste-des-taches",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "main.js",
   "description": "L'application permet de créer vos taches à effectuer pour ne rien oublié",
   "author": "Ashvin Painiaye <contact@ashvinpainiaye.com>",
