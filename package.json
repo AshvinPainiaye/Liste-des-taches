@@ -1,5 +1,5 @@
 {
-  "name": "liste des tâches",
+  "name": "liste-des-taches",
   "version": "1.0.5",
   "main": "main.js",
   "description": "L'application permet de créer vos tâches à effectuer pour ne rien oublié",
