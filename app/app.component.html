@@ -4,7 +4,7 @@
       <h1 class="text-center">Liste des tâches</h1>
       <form (submit)="onSubmit()">
         <div class="form-group">
-          <input [(ngModel)]="newTodo" type="text" class="form-control" name="newTodo" placeholder="Ajouter une tâche..." style="border-radius:0;" required>
+          <input [(ngModel)]="newTodo" type="text" class="form-control" name="newTodo" placeholder="Ajouter une tâche..." style="margin:40px 0; border-radius:0;" required>
         </div>
       </form>
     </div>
@@ -16,9 +16,9 @@
   <div class="row">
     <div class="col-md-12">
       <section class="panel tasks-widget">
-        <header class="panel-heading">
+        <header class="panel-heading" style="margin-bottom:15px">
           <div class="pull-right">
-            <button class="btn btn-success btn-xs" (click)="deleteAllTodoCompleted()" *ngIf="nbTodosCompleted > 0">Supprimer les tâches effectuées</button>
+            <button *ngIf="_filter == true && nbTodosCompleted > 0" class="btn btn-success btn-xs" (click)="deleteAllTodoCompleted()">Supprimer les tâches effectuées</button>
             <button class="btn btn-danger btn-xs" (click)="deleteAllTodo()">Tout supprimer</button>
           </div>
         </header>
@@ -26,14 +26,12 @@
           <div class="task-content">
             <div class="text-center">
               <div class="btn-group" style="margin-bottom:15px;" role="group" aria-label="...">
-                <button *ngIf="_filter == 'tout'" type="button" class="btn btn-default btn-xs active" (click)="filter('tout')">Tout</button>
-                <button *ngIf="_filter != 'tout'" type="button" class="btn btn-default btn-xs" (click)="filter('tout')">Tout</button>
-
+                <button *ngIf="_filter == false" type="button" class="btn btn-default btn-xs active" (click)="filter(false)">En cours</button>
+                <button *ngIf="_filter != false" type="button" class="btn btn-default btn-xs" (click)="filter(false)">En cours</button>
+                
                 <button *ngIf="_filter == true" type="button" class="btn btn-default btn-xs active" (click)="filter(true)">Terminées</button>
                 <button *ngIf="_filter != true" type="button" class="btn btn-default btn-xs" (click)="filter(true)">Terminées</button>
 
-                <button *ngIf="_filter == false" type="button" class="btn btn-default btn-xs active" (click)="filter(false)">En cours</button>
-                <button *ngIf="_filter != false" type="button" class="btn btn-default btn-xs" (click)="filter(false)">En cours</button>
               </div>
             </div>
             

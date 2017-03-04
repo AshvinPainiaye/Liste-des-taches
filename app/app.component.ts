@@ -16,7 +16,7 @@ export class AppComponent {
   listTodos: any;
   nbTodos: number;
   nbTodosCompleted: number;
-  _filter: string;
+  _filter: any;
   db: any;
 
   constructor() {
@@ -24,16 +24,19 @@ export class AppComponent {
     this.getAll();
     this.getNb();
     this.getNbCompleted();
-    this._filter = 'tout';
+    this.filter(false);
   }
 
 
   // Get all tasks
   getAll() {
-    this.db.find({}, (err: Error, todos: string[]) => {
+    /*this.db.find({}, (err: Error, todos: string[]) => {
       if (err) throw err;
       this.listTodos = todos;
-    });
+    });*/
+
+     this.filter(this._filter);
+
   }
 
 
@@ -57,16 +60,11 @@ export class AppComponent {
 
   filter(filter: any) {
 
-    if (filter == 'tout') {
-      this.getAll();
-    } else {
-
       this.db.find({ 'complete': filter }, (err: Error, todos: string[]) => {
         if (err) throw err;
         this.listTodos = todos;
       });
 
-    }
     this._filter = filter;
 
   }
@@ -77,9 +75,9 @@ export class AppComponent {
       complete: false
     };
     this.db.insert(todo);
+    this._filter = false;
     this.getAll();
     this.getNb();
-    this._filter = 'tout';
     this.newTodo = '';
   }
 
@@ -99,7 +97,7 @@ export class AppComponent {
   }
 
   deleteAllTodo() {
-    if (confirm("Voulez-vous réellement supprimer toute les taches ?")) {
+    if (confirm("Voulez-vous réellement supprimer toute les tâches ?")) {
       this.db.remove({}, { multi: true });
       this.getAll();
       this.getNb();
@@ -108,17 +106,16 @@ export class AppComponent {
   }
 
   deleteAllTodoCompleted() {
-    if (confirm("Voulez-vous réellement supprimer toute les taches effectuer ?")) {
+    if (confirm("Voulez-vous réellement supprimer toute les tâches terminées ?")) {
       this.db.remove({ 'complete': true }, { multi: true });
       this.getAll();
       this.getNb();
       this.getNbCompleted();
-      this._filter = 'tout';
     }
   }
 
   deleteTodo(id: string) {
-    if (confirm("Voulez-vous réellement supprimer cette tache ?")) {
+    if (confirm("Voulez-vous réellement supprimer cette tâche ?")) {
       this.db.remove({ '_id': id });
       this.getAll();
       this.getNb();
